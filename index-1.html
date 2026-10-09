@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1220">
+<title>WORLD DOMINION | استراتژی آنلاین</title>
+<style>
+:root{--bg:#0b1220;--panel:#121d30;--panel2:#17253b;--line:#263852;--text:#edf4ff;--muted:#9eb0c9;--cyan:#57d6d0;--gold:#ffc96b;--red:#ff737d;--green:#6ee7a2}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 20% 0%,#1c3650 0,transparent 42%),var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:11px 15px;color:#06131d;background:var(--cyan);font-weight:700}button.secondary{background:#243650;color:var(--text);border:1px solid #354b68}button.gold{background:var(--gold)}button.danger{background:#532b3b;color:#ffe9ec;border:1px solid #834252}button:disabled{opacity:.45;cursor:not-allowed}
+.wrap{max-width:1200px;margin:auto;padding:18px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding:10px 0 18px}.brand{display:flex;gap:12px;align-items:center}.logo{width:46px;height:46px;border-radius:15px;background:linear-gradient(145deg,var(--cyan),#4287dc);display:grid;place-items:center;color:#06131d;font-size:24px;font-weight:900;box-shadow:0 8px 30px #57d6d033}.brand h1{font-size:20px;margin:0;letter-spacing:1px}.brand p{margin:5px 0 0;color:var(--muted);font-size:12px}.badge{border:1px solid #31546b;color:var(--cyan);border-radius:999px;padding:8px 12px;font-size:12px}
+.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;margin-top:18px}.card{background:linear-gradient(180deg,#142137,#101a2b);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 12px 36px #0002}.card h2{font-size:17px;margin:0 0 14px}.muted{color:var(--muted);font-size:13px;line-height:1.8}.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.mode{border:1px solid var(--line);border-radius:15px;padding:14px 10px;background:#101a2b;text-align:center;cursor:pointer;transition:.2s}.mode.active{border-color:var(--cyan);background:#18333e;box-shadow:inset 0 0 0 1px #57d6d033}.mode .emoji{font-size:26px}.mode b{display:block;margin:8px 0 4px}.mode small{color:var(--muted);font-size:11px}
+.formrow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:13px}.field label{display:block;color:var(--muted);font-size:12px;margin-bottom:7px}.field input,.field select{width:100%;background:#0b1423;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px;outline:none}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.roomcode{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#0a1422;border:1px dashed #3b5a76;border-radius:13px;padding:12px;margin-top:13px}.roomcode strong{font-size:20px;letter-spacing:3px;color:var(--gold)}
+.joinbox{margin-top:12px;padding:13px;border:1px solid #2b4864;border-radius:13px;background:#0c1727}.joinbox h3{font-size:14px;margin:0 0 8px}.joinrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}.joinrow input{min-width:0;background:#091321;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px;text-transform:uppercase;letter-spacing:2px}.economy-note{font-size:12px;line-height:1.8;color:#c6d7e9;margin-top:10px;padding:10px;background:#0b1524;border-radius:10px;border:1px solid var(--line)}.hidden{display:none!important}
+.map{min-height:330px;position:relative;overflow:hidden;border-radius:15px;background:radial-gradient(ellipse at 50% 45%,#1b3a4b,#0c1727 70%);border:1px solid #2a425b}.map:before{content:"";position:absolute;inset:0;background-image:linear-gradient(#38516a22 1px,transparent 1px),linear-gradient(90deg,#38516a22 1px,transparent 1px);background-size:28px 28px;mask-image:linear-gradient(#000,transparent)}.worldsvg{position:absolute;inset:4% 3%;width:94%;height:91%;filter:drop-shadow(0 8px 10px #0005)}.land{fill:#245f65;stroke:#72c8c4;stroke-width:1.15;stroke-linejoin:round;opacity:.95}.land:hover{fill:#347f80}.region{cursor:pointer;transition:filter .15s,fill .15s}.region:hover{filter:brightness(1.35)}.region.selected{stroke:#ffc96b;stroke-width:3;filter:brightness(1.35)}.region.owned{fill:#3f8b63;stroke:#9ce6b6}.maplabels{font-size:10px;fill:#d5f0f3;opacity:.8;letter-spacing:1px}.territory{position:absolute;border:1px solid #c2f5ff99;background:#58d6d044;border-radius:50%;width:18px;height:18px;box-shadow:0 0 14px #57d6d077;cursor:pointer}.territory:hover{transform:scale(1.4);background:var(--gold)}.maptitle{position:absolute;top:12px;right:12px;background:#07111dcc;border:1px solid #2a425b;border-radius:10px;padding:8px 10px;font-size:12px}.maphint{position:absolute;bottom:12px;right:12px;left:12px;background:#07111dcc;border:1px solid #2a425b;border-radius:10px;padding:9px;font-size:12px;color:#c8d8ec}.radial{position:absolute;z-index:5;display:none;min-width:190px;max-width:calc(100% - 24px);padding:10px;background:#091321f5;border:1px solid #4a6d89;border-radius:16px;box-shadow:0 12px 30px #0008}.radial.open{display:grid;gap:7px}.radial-title{font-size:12px;color:var(--gold);padding:2px 4px 5px}.radial button{width:100%;text-align:right;padding:10px 12px;font-size:12px}.radial .close-radial{background:#26354a;color:#dce8f7}.navy-status{font-size:12px;color:#9fe7f0;padding:8px 10px;border:1px solid #2d5368;background:#102738;border-radius:10px;margin-top:10px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:12px}.stat{background:#0b1524;border:1px solid var(--line);padding:11px;border-radius:12px}.stat span{font-size:11px;color:var(--muted)}.stat b{display:block;margin-top:5px;font-size:19px}.players{display:grid;gap:8px}.player{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border:1px solid var(--line);border-radius:11px;background:#0d1727}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--green);margin-left:7px}.log{max-height:160px;overflow:auto;display:grid;gap:7px}.log div{font-size:12px;color:#c1d0e4;border-right:2px solid var(--cyan);padding:4px 9px;background:#0b1524;border-radius:5px}
+.footer{text-align:center;color:#7187a3;font-size:11px;padding:20px}.notice{border:1px solid #765c2d;background:#2c2517;color:#f7dca0;padding:11px 13px;border-radius:12px;font-size:12px;line-height:1.8;margin-top:12px}
+@media(max-width:800px){.grid{grid-template-columns:1fr}.wrap{padding:12px}.card{padding:14px}.map{min-height:290px}.brand h1{font-size:17px}}@media(max-width:420px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.modes{gap:6px}.mode{padding:11px 5px}.mode small{font-size:10px}.formrow{grid-template-columns:1fr}.stats{gap:6px}.stat{padding:9px}.stat b{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div class="brand"><div class="logo">W</div><div><h1>WORLD DOMINION</h1><p>استراتژی • دیپلماسی • نبرد برای برتری</p></div></div>
+  <div class="badge">نسخه آزمایشی رابط بازی</div>
+</header>
+
+<div class="grid">
+<section class="card">
+  <h2>✦ ساخت میدان نبرد</h2>
+  <p class="muted">دوره‌ات را انتخاب کن، اتاق دوستانت را آماده کن و برای نبرد برنامه بریز.</p>
+  <div class="modes" id="modes">
+    <div class="mode active" data-mode="تاریخی"><div class="emoji">🏛️</div><b>تاریخی</b><small>امپراتوری‌ها و جنگ جهانی</small></div>
+    <div class="mode" data-mode="مدرن"><div class="emoji">🛰️</div><b>مدرن</b><small>کشورها و فناوری امروز</small></div>
+    <div class="mode" data-mode="آینده"><div class="emoji">🚀</div><b>آینده</b><small>ربات‌ها و فناوری خیالی</small></div>
+  </div>
+  <div class="formrow">
+    <div class="field"><label for="nickname">نام فرمانده</label><input id="nickname" maxlength="18" value="فرمانده" placeholder="نامت را وارد کن"></div>
+    <div class="field"><label for="maxPlayers">ظرفیت اتاق</label><select id="maxPlayers"><option>2</option><option>4</option><option selected>8</option></select></div>
+    <div class="field"><label for="mapType">منطقهٔ بازی</label><select id="mapType"><option value="جهان">🌍 کل جهان</option><option value="آسیا">🌏 آسیا</option><option value="آفریقا">🌍 آفریقا</option><option value="اروپا">🏰 اروپا</option><option value="آمریکاها">🌎 آمریکای شمالی و جنوبی</option><option value="اقیانوسیه">🏝️ اقیانوسیه</option></select></div>
+    <div class="field"><label for="difficulty">قدرت بات‌ها</label><select id="difficulty"><option>آسان</option><option selected>عادی</option><option>سخت</option></select></div>
+    <div class="field"><label for="victory">شرط پیروزی</label><select id="victory"><option>تصرف بیشتر مناطق</option><option>برتری اقتصادی</option><option>حفظ پایتخت</option></select></div>
+    <div class="field"><label for="speed">سرعت بازی</label><select id="speed"><option>آرام</option><option selected>عادی</option><option>سریع</option></select></div>
+    <div class="field"><label for="starting">منابع آغازین</label><select id="starting"><option>کم</option><option selected>متعادل</option><option>زیاد</option></select></div>
+    <div class="field"><label for="fog">مه جنگ</label><select id="fog"><option>خاموش</option><option selected>روشن</option></select></div>
+  </div>
+  <div class="actions"><button id="createRoom">＋ ساخت اتاق آزمایشی</button><button class="secondary" id="addBot">🤖 افزودن بات</button><button class="secondary" id="startGame" disabled>▶ شروع بازی آزمایشی</button></div>
+  <div class="roomcode hidden" id="roomBox"><div><span class="muted">کد اتاق نمایشی</span><br><strong id="roomCode">----</strong></div><button class="gold" id="copyCode">کپی کد</button></div>
+  <div class="joinbox">
+    <h3>🔑 ورود به اتاق با کد</h3>
+    <p class="muted">کد اتاق دوستت را اینجا وارد کن.</p>
+    <div class="joinrow"><input id="joinCode" maxlength="6" placeholder="مثلاً A7K2Q9" aria-label="کد اتاق"><button id="joinRoom" class="gold" type="button">ورود به اتاق</button></div>
+    <p class="muted" id="joinStatus" aria-live="polite">در نسخهٔ فعلی، ورود فقط نمایشی است؛ اتصال بین گوشی‌های مختلف هنوز سرور آنلاین می‌خواهد.</p>
+  </div>
+  <div class="notice">مهم: این نسخه پیش‌نمایش قابل کلیک است. انتخاب منطقه و تنظیمات در همین مرورگر نمایش داده می‌شوند؛ اتاق و بات‌ها هنوز آنلاین و مشترک بین دستگاه‌ها نیستند. برای بازی واقعی با دوستان باید سرور آنلاین اضافه شود.</div>
+</section>
+
+<section class="card">
+  <h2>🌐 نقشه عملیات</h2>
+  <div class="map" id="map">
+    <div class="maptitle" id="mapLabel">نقشه جهان • تاریخی</div>
+    <svg class="worldsvg" viewBox="0 0 800 390" role="img" aria-label="نقشه شماتیک جهان">
+      <g class="land">
+        <path class="region" data-region="آمریکای شمالی" d="M65 72 L99 48 145 39 179 52 205 78 193 101 170 111 157 140 131 154 115 187 91 172 83 142 60 119 48 93 Z"/>
+        <path class="region" data-region="آمریکای مرکزی" d="M153 154 L177 163 190 181 207 190 198 203 183 193 171 178 Z"/>
+        <path class="region" data-region="آمریکای جنوبی" d="M202 199 L230 203 251 227 245 256 232 282 225 320 208 351 194 323 187 291 176 259 182 229 Z"/>
+        <path class="region" data-region="اروپا" d="M350 80 L374 66 399 72 416 87 404 102 384 104 371 117 354 105 Z"/>
+        <path class="region" data-region="آفریقا" d="M360 124 L396 117 424 137 430 168 414 205 399 245 381 264 366 231 350 198 345 161 Z"/>
+        <path class="region" data-region="آسیا" d="M407 73 L444 54 494 50 535 63 579 58 623 79 650 99 635 119 599 119 580 141 547 134 529 157 499 148 475 129 446 131 425 111 404 105 Z"/>
+        <path class="region" data-region="هند" d="M475 145 L500 151 513 176 502 204 489 187 481 165 Z"/>
+        <path class="region" data-region="جنوب شرق آسیا" d="M541 156 L566 164 583 184 570 195 552 181 Z M584 198 L610 204 625 215 609 221 590 213 Z"/>
+        <path class="region" data-region="ژاپن" d="M645 126 L653 137 649 151 642 143 Z"/>
+        <path class="region" data-region="استرالیا" d="M612 248 L648 238 678 251 687 272 668 290 638 291 615 276 Z"/>
+        <path class="region" data-region="گرینلند" d="M225 37 L254 26 276 42 269 71 246 87 228 69 Z"/>
+        <path class="region" data-region="بریتانیا" d="M337 84 L344 78 348 90 342 99 Z"/>
+        <path class="region" data-region="مدیترانه" d="M405 111 L433 111 450 120 436 129 414 125 Z"/>
+      </g>
+      <g class="maplabels"><text x="118" y="220">AMERICAS</text><text x="366" y="285">AFRICA</text><text x="500" y="36">ASIA</text><text x="615" y="316">OCEANIA</text></g>
+    </svg>
+    <div class="radial" id="radialMenu" role="dialog" aria-label="منوی منطقه">
+      <div class="radial-title" id="radialTitle">منطقه انتخاب شد</div>
+      <button type="button" id="regionInfo" class="secondary">ℹ️ اطلاعات منطقه</button>
+      <button type="button" id="captureAction" class="gold">🚩 تصرف منطقه · ۱۰۰ سکه + ۲۰ نیرو</button>
+      <button type="button" id="diplomacyAction" class="secondary">🤝 پیشنهاد اتحاد آزمایشی</button>
+      <button type="button" id="harborAction" class="gold">⚓ ساخت بندر / آماده‌سازی کشتی</button>
+      <button type="button" id="closeRadial" class="close-radial">بستن منو ✕</button>
+    </div>
+    <div class="maphint" id="mapHint">منطقهٔ دلخواه را از تنظیمات انتخاب کن؛ سپس برای بررسی هر بخش روی نقشه بزن.</div>
+  </div>
+  <div class="navy-status" id="navyStatus">⚓ ناوگان دریایی: ۰ · بندرها: ۰ — برای دیدن منوی منطقه، روی یک بخش نقشه بزن.</div>
+  <div class="stats">
+    <div class="stat"><span>💰 خزانه</span><b id="gold">1,000</b></div>
+    <div class="stat"><span>🪖 نیروها</span><b id="army">120</b></div>
+    <div class="stat"><span>⭐ اعتبار</span><b id="score">0</b></div>
+    <div class="stat"><span>🚩 مناطق</span><b id="territoryCount">0</b></div>
+    <div class="stat"><span>📈 درآمد/نوبت</span><b id="income">100</b></div>
+    <div class="stat"><span>🏭 سطح اقتصاد</span><b id="economyLevel">1</b></div>
+  </div>
+  <div class="actions"><button class="secondary" id="recruit">🪖 استخدام نیرو · 100</button><button class="secondary" id="research">🔬 تحقیق · 150</button><button class="secondary" id="developEconomy">🏭 توسعه اقتصاد · 250</button><button class="secondary" id="endTurn">⏭️ پایان نوبت</button></div>
+  <div class="economy-note" id="economyNote">اقتصاد: درآمد پایه ۱۰۰ سکه در هر نوبت. تصرف مناطق و ارتقای اقتصاد، درآمدت را بیشتر می‌کند؛ نگهداری ارتش هم هزینه دارد.</div>
+</section>
+
+<section class="card">
+  <h2>👥 فرماندهان اتاق</h2>
+  <div class="players" id="players"><div class="player"><span><i class="dot"></i>هنوز اتاقی نساختی</span><span class="muted">—</span></div></div>
+  <div class="actions"><button class="secondary" id="voiceBtn">🎙️ مذاکره صوتی: نیازمند اتصال</button></div>
+  <p class="muted">ویس واقعی به اتصال امن WebRTC و سرویس هماهنگ‌کننده نیاز دارد. این دکمه فعلاً فقط وضعیت قابلیت را توضیح می‌دهد و میکروفون را فعال نمی‌کند.</p>
+</section>
+
+<section class="card">
+  <h2>📜 گزارش فرماندهی</h2>
+  <div class="log" id="logs"><div>ستاد فرماندهی آماده است. یک اتاق آزمایشی بساز.</div></div>
+  <div class="actions"><button class="secondary" id="reset">↻ شروع دوباره</button></div>
+</section>
+</div>
+<div class="footer">WORLD DOMINION • نمونه اولیه مستقل • برای استفاده آنلاین نیازمند سرور و همگام‌سازی واقعی است.</div>
+</div>
+<script>
+(() => {
+ let mode='تاریخی', room=false, started=false, gold=1000, army=120, score=0, bots=0, turn=1, code='', selectedRegion='', ships=0, ports=0, gameMap='جهان', economyLevel=1, researchLevel=0, guestPreview=false;
+ const ownedRegions=new Set();
+ const regionGroups={'جهان':null,'آسیا':['آسیا','هند','جنوب شرق آسیا','ژاپن'],'آفریقا':['آفریقا'],'اروپا':['اروپا','بریتانیا','مدیترانه'],'آمریکاها':['آمریکای شمالی','آمریکای مرکزی','آمریکای جنوبی','گرینلند'],'اقیانوسیه':['استرالیا']};
+ const $=id=>document.getElementById(id);
+ const log=msg=>{const el=document.createElement('div');el.textContent='نوبت '+turn+' — '+msg;$('logs').prepend(el)};
+ function renderPlayers(){
+   const name=($('nickname').value.trim()||'فرمانده').slice(0,18);
+   const rows=[];
+   if(room) rows.push(`<div class="player"><span><i class="dot"></i>${escapeHtml(name)} <small>(میزبان)</small></span><span class="muted">آماده</span></div>`);
+   for(let i=1;i<=bots;i++) rows.push(`<div class="player"><span><i class="dot" style="background:var(--gold)"></i>بات ${i}</span><span class="muted">${$('difficulty').value}</span></div>`);
+   if(!rows.length) rows.push('<div class="player"><span>هنوز اتاقی نساختی</span><span class="muted">—</span></div>');
+   $('addBot').disabled=!room||started||bots>=Number($('maxPlayers').value)-1;
+   $('players').innerHTML=rows.join('');
+   $('startGame').disabled=!room||started;
+ }
+ function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+ function incomePerTurn(){return 100+(ownedRegions.size*60)+((economyLevel-1)*75)+(researchLevel*25)}
+ function update(){ $('gold').textContent=gold.toLocaleString('en-US');$('army').textContent=army.toLocaleString('en-US');$('score').textContent=score.toLocaleString('en-US');$('territoryCount').textContent=ownedRegions.size.toLocaleString('en-US');$('income').textContent=incomePerTurn().toLocaleString('en-US');$('economyLevel').textContent=economyLevel.toLocaleString('en-US');$('mapLabel').textContent='نقشه '+$('mapType').selectedOptions[0].textContent+' • '+mode; $('economyNote').textContent='درآمد هر نوبت: '+incomePerTurn()+' سکه (پایه ۱۰۰ + مناطق '+(ownedRegions.size*60)+' + اقتصاد '+((economyLevel-1)*75)+' + تحقیق '+(researchLevel*25)+'). هزینه نگهداری ارتش: '+Math.floor(army/50)*10+' سکه در هر نوبت.'; applyMapRegion(); document.querySelectorAll('.region').forEach(el=>{el.classList.toggle('owned',ownedRegions.has(el.dataset.region));el.classList.toggle('selected',el.dataset.region===selectedRegion);}); }
+ function applyMapRegion(){const key=$('mapType').value,chosen=regionGroups[key],svg=document.querySelector('.worldsvg');const views={'جهان':'0 0 800 390','آسیا':'390 35 300 240','آفریقا':'320 100 150 180','اروپا':'315 45 155 105','آمریکاها':'35 20 250 340','اقیانوسیه':'570 220 150 100'};if(svg)svg.setAttribute('viewBox',views[key]||views['جهان']);document.querySelectorAll('.region').forEach(el=>{const visible=!chosen||chosen.includes(el.dataset.region);el.style.display=visible?'':'none';el.style.opacity=visible?'1':'.12';});const labels=document.querySelector('.maplabels');if(labels)labels.style.opacity=key==='جهان'?'.8':'0';}
+ document.querySelectorAll('.mode').forEach(el=>el.addEventListener('click',()=>{if(started){log('برای تغییر دوره، بازی را از نو شروع کن.');return}document.querySelectorAll('.mode').forEach(x=>x.classList.remove('active'));el.classList.add('active');mode=el.dataset.mode;update();log('حالت '+mode+' انتخاب شد.')}));
+ $('createRoom').addEventListener('click',()=>{if(started){log('بازی در حال اجراست؛ برای ساخت اتاق تازه اول «شروع دوباره» را بزن.');return}room=true;code=Math.random().toString(36).slice(2,8).toUpperCase().padEnd(6,'X');$('roomBox').classList.remove('hidden');$('roomCode').textContent=code;$('copyCode').textContent='کپی کد';renderPlayers();log('اتاق آزمایشی '+code+' ساخته شد؛ منطقه: '+$('mapType').value+'، حالت: '+mode+'، پیروزی: '+$('victory').value+'.');});
+ $('copyCode').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(code);$('copyCode').textContent='کپی شد ✓'}catch(e){prompt('کد اتاق را کپی کن:',code)}});
+ $('joinCode').addEventListener('input',()=>{$('joinCode').value=$('joinCode').value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,6)});
+ $('joinRoom').addEventListener('click',()=>{const entered=$('joinCode').value.trim().toUpperCase();if(entered.length<4){$('joinStatus').textContent='کد اتاق را کامل وارد کن (حداقل ۴ حرف یا عدد).';log('کد ورود ناقص است.');return}if(room&&entered===code){$('joinStatus').textContent='این اتاق روی همین مرورگر پیدا شد؛ تو میزبان هستی. برای دوستت هنوز اتصال آنلاین لازم است.';log('کد اتاق فعلی تأیید شد؛ این دستگاه میزبان است.');return}guestPreview=true;$('joinStatus').textContent='کد '+entered+' دریافت شد، اما سرور آنلاین برای پیدا کردن اتاق و وصل‌کردن دوستت هنوز راه‌اندازی نشده؛ ورود واقعی انجام نشد.';log('کد '+entered+' وارد شد؛ اتصال واقعی به اتاق ممکن نیست چون سرور آنلاین هنوز وجود ندارد.');});
+ $('addBot').addEventListener('click',()=>{if(!room){log('اول اتاق بساز، بعد بات اضافه کن.');return}if(started){log('بعد از شروع بازی نمی‌توان بات تازه اضافه کرد.');return}if(bots>=Number($('maxPlayers').value)-1){log('ظرفیت اتاق پر است؛ ظرفیت انتخابی '+$('maxPlayers').value+' نفر است.');return}bots++;renderPlayers();log('بات '+bots+' به اتاق آزمایشی اضافه شد.')});
+ $('startGame').addEventListener('click',()=>{if(!room){log('اول اتاق بساز.');return}if(started)return;started=true;gameMap=$('mapType').value;const starting=$('starting').value;gold=starting==='کم'?500:starting==='زیاد'?1800:1000;army=starting==='کم'?70:starting==='زیاد'?200:120;renderPlayers();update();log('مسابقهٔ نمایشی آغاز شد؛ منطقه '+$('mapType').value+'، سرعت '+$('speed').value+'، منابع '+starting+'، مه جنگ '+$('fog').value+'.');$('mapHint').textContent='بازی آغاز شد. برای تصرف منطقه، روی یکی از بخش‌های نقشه بزن؛ هر منطقه ۱۰۰ سکه و ۲۰ نیرو هزینه دارد.'});
+ $('recruit').addEventListener('click',()=>{if(!started){log('ابتدا مسابقه آزمایشی را شروع کن.');return}if(gold<100){log('خزانه برای استخدام کافی نیست.');return}gold-=100;army+=25;update();log('۲۵ نیروی آزمایشی استخدام شدند.')});
+ $('research').addEventListener('click',()=>{if(!started){log('ابتدا مسابقه آزمایشی را شروع کن.');return}if(gold<150){log('خزانه برای تحقیق کافی نیست.');return}gold-=150;researchLevel++;score+=10;update();log('تحقیق سطح '+researchLevel+' کامل شد؛ ۱۰ اعتبار و ۲۵ سکه درآمد بیشتر در هر نوبت دریافت کردی.')});
+ $('developEconomy').addEventListener('click',()=>{if(!started){log('ابتدا مسابقهٔ آزمایشی را شروع کن.');return}if(gold<250){log('برای توسعهٔ اقتصاد حداقل ۲۵۰ سکه لازم داری.');return}gold-=250;economyLevel++;score+=5;update();log('🏭 اقتصاد به سطح '+economyLevel+' ارتقا یافت؛ درآمد هر نوبت ۷۵ سکه افزایش پیدا کرد.');});
+ $('endTurn').addEventListener('click',()=>{if(!started){log('ابتدا مسابقه آزمایشی را شروع کن.');return}turn++;const gross=incomePerTurn()+(bots*20);const upkeep=Math.floor(army/50)*10;const net=gross-upkeep;gold=Math.max(0,gold+net);score+=bots;update();log('پایان نوبت: درآمد '+gross+' − نگهداری ارتش '+upkeep+' = '+net+' سکه خالص.');});
+ function updateNavy(){ $('navyStatus').textContent='⚓ ناوگان دریایی: '+ships+' · بندرها: '+ports+' — قابلیت دریایی در این نسخه نمایشی است.'; }
+ function closeRadial(){ $('radialMenu').classList.remove('open'); }
+ $('map').addEventListener('click',e=>{
+   const region=e.target.closest('[data-region]');
+   if(region&&region.style.display!=='none'){
+     selectedRegion=region.dataset.region;
+     update();
+     $('mapHint').textContent='منطقهٔ انتخاب‌شده: '+selectedRegion+(started?' — منوی عملیات را برای دیدن گزینه‌ها استفاده کن.':' — اتاق بساز و بازی آزمایشی را شروع کن تا گزینه‌های عملیات فعال شوند.');
+     $('radialTitle').textContent='📍 '+selectedRegion;
+     const mapRect=$('map').getBoundingClientRect();
+     const menu=$('radialMenu');
+     const x=Math.max(8,Math.min(e.clientX-mapRect.left+8,mapRect.width-205));
+     const y=Math.max(45,Math.min(e.clientY-mapRect.top+8,mapRect.height-225));
+     menu.style.left=x+'px';menu.style.top=y+'px';menu.classList.add('open');
+     if(started)log('منطقهٔ '+selectedRegion+' انتخاب شد.');
+   } else if(!e.target.closest('#radialMenu')) closeRadial();
+ });
+ $('closeRadial').addEventListener('click',closeRadial);
+ $('regionInfo').addEventListener('click',()=>{if(!selectedRegion)return;$('mapHint').textContent='📍 '+selectedRegion+' | دوره: '+mode+' | وضعیت: '+(ownedRegions.has(selectedRegion)?'تحت کنترل تو':'آزاد در نمونهٔ آزمایشی')+'. مرزها شماتیک‌اند.';log('اطلاعات منطقهٔ '+selectedRegion+' باز شد.');closeRadial();});
+ $('captureAction').addEventListener('click',()=>{if(!selectedRegion){closeRadial();return}if(!started){log('ابتدا اتاق بساز و بازی را شروع کن.');closeRadial();return}if(ownedRegions.has(selectedRegion)){log('منطقهٔ '+selectedRegion+' از قبل تحت کنترل توست.');closeRadial();return}if(gold<100||army<20){log('برای تصرف '+selectedRegion+' حداقل ۱۰۰ سکه و ۲۰ نیرو لازم داری.');closeRadial();return}gold-=100;army-=20;ownedRegions.add(selectedRegion);score+=15;update();log('🚩 منطقهٔ '+selectedRegion+' در نسخهٔ آزمایشی تحت کنترل تو درآمد.');$('mapHint').textContent='🚩 '+selectedRegion+' تحت کنترل توست! هزینه: ۱۰۰ سکه و ۲۰ نیرو.';closeRadial();if($('victory').value==='تصرف بیشتر مناطق'&&ownedRegions.size>=5){log('🏆 به هدف آزمایشی تصرف ۵ منطقه رسیدی!');}});
+ $('diplomacyAction').addEventListener('click',()=>{if(!started){log('برای استفاده از دیپلماسی، اول بازی آزمایشی را شروع کن.');closeRadial();return}if(bots===0){log('برای آزمایش دیپلماسی، اول یک بات اضافه کن.');$('mapHint').textContent='برای آزمایش اتحاد، ابتدا یک بات به اتاق اضافه کن.';closeRadial();return}score+=5;update();log('پیشنهاد اتحاد نمایشی از منطقهٔ '+selectedRegion+' ثبت شد؛ بات هنوز هوش مصنوعی دیپلماسی واقعی ندارد.');$('mapHint').textContent='🤝 پیشنهاد اتحاد آزمایشی از '+selectedRegion+' ثبت شد؛ این هنوز آنلاین یا هوش مصنوعی واقعی نیست.';closeRadial();});
+ $('harborAction').addEventListener('click',()=>{if(!started){log('ابتدا اتاق بساز و بازی آزمایشی را شروع کن.');closeRadial();return}if(gold<150){log('برای ساخت بندر آزمایشی حداقل ۱۵۰ سکه لازم است.');closeRadial();return}gold-=150;ports++;ships++;update();updateNavy();log('⚓ بندر و یک کشتی نمایشی در '+selectedRegion+' آماده شد؛ مسیر دریایی و حمل‌ونقل واقعی هنوز پیاده‌سازی نشده.');$('mapHint').textContent='⚓ در '+selectedRegion+' یک بندر و کشتی نمایشی آماده شد. هزینه: ۱۵۰ سکه.';closeRadial();});
+ $('mapType').addEventListener('change',()=>{if(started){$('mapType').value=gameMap;log('منطقهٔ نقشه بعد از شروع قفل است؛ برای تغییر آن بازی را از نو شروع کن.');return}update();$('mapHint').textContent='منطقهٔ نقشه روی «'+$('mapType').value+'» تنظیم شد.';log('منطقهٔ بازی به '+$('mapType').value+' تغییر کرد.');});
+ ['victory','speed','starting','fog','difficulty'].forEach(id=>$(id).addEventListener('change',()=>{if(room)log('تنظیم «'+id+'» تغییر کرد: '+$(id).value+'.');renderPlayers();}));
+ $('voiceBtn').addEventListener('click',()=>alert('ویس هنوز به سرور و WebRTC وصل نشده است. برای مذاکره صوتی واقعی باید بخش آنلاین جداگانه راه‌اندازی شود.'));
+ $('reset').addEventListener('click',()=>{room=false;started=false;guestPreview=false;gameMap=$('mapType').value;gold=1000;army=120;score=0;bots=0;turn=1;code='';selectedRegion='';ships=0;ports=0;economyLevel=1;researchLevel=0;ownedRegions.clear();$('joinCode').value='';$('joinStatus').textContent='در نسخهٔ فعلی، ورود فقط نمایشی است؛ اتصال بین گوشی‌های مختلف هنوز سرور آنلاین می‌خواهد.';closeRadial();updateNavy();$('roomBox').classList.add('hidden');$('logs').innerHTML='<div>ستاد فرماندهی آماده است. تنظیمات را انتخاب کن و اتاق بساز.</div>';document.querySelectorAll('.territory').forEach(x=>x.remove());$('mapHint').textContent='منطقهٔ دلخواه را انتخاب کن و روی نقشه بزن.';renderPlayers();update();});
+ $('nickname').addEventListener('change',renderPlayers);$('maxPlayers').addEventListener('change',()=>{const limit=Number($('maxPlayers').value)-1;if(bots>limit){bots=limit;log('تعداد بات‌ها با ظرفیت جدید اتاق هماهنگ شد.')}renderPlayers();});
+ update();updateNavy();renderPlayers();
+})();
+</script>
+</body>
+</html>
